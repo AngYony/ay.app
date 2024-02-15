@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WY.EntityFramework\WY.EntityFramework.csproj" />
+    <ProjectReference Include="..\WY.IRepositories\WY.IRepositories.csproj" />
+    <ProjectReference Include="..\WY.IServices\WY.IServices.csproj" />
+    <ProjectReference Include="..\WY.Model\WY.Model.csproj" />
+  </ItemGroup>
+
+</Project>
