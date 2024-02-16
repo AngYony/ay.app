@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WY.Model\WY.Model.csproj" />
+    <ProjectReference Include="..\WY.EntityFramework\WY.EntityFramework.csproj" />
   </ItemGroup>
 
 </Project>

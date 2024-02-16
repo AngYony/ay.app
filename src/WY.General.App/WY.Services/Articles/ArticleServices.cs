@@ -1,13 +1,13 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WY.IRepositories;
-using WY.IServices;
+using WY.EntityFramework.Repositories;
 using WY.Model.Models;
-using Microsoft.EntityFrameworkCore;
-namespace WY.Services
+
+namespace WY.Services.Articles
 {
     public class ArticleServices : IArticleService
     {

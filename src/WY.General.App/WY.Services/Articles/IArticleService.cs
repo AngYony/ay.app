@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WY.Model.Models;
 
-namespace WY.IServices
+namespace WY.Services.Articles
 {
     public interface IArticleService
     {

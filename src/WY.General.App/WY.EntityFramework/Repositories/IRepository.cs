@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WY.IRepositories
+namespace WY.EntityFramework.Repositories
 {
     /// <summary>
     /// 此接口是所有仓储的约定, 此接口仅作为约定，用于标识它们。
