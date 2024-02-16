@@ -1,0 +1,21 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Presentation 展现层", "1. Presentation 展现层", "{C715FE64-15DE-4BBC-8A1A-0161EB15A5D6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Application 应用层", "2. Application 应用层", "{ACD1E79A-9FE1-4D5D-BEF0-FD207CA8DBC6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Domain 领域层", "3. Domain 领域层", "{32999291-8B3A-4C57-9D77-07EF89C6B1B8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Infrastructure 基础设施层", "4. Infrastructure 基础设施层", "{28B04B8F-7F06-4D09-92DF-FA2F57C90E87}"
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C721B13E-DF76-4C05-9060-5FE5D415B4D4}
+	EndGlobalSection
+EndGlobal

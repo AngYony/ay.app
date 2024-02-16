@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using WY.Model.Models;
-using WY.Services.Articles;
+﻿using Microsoft.AspNetCore.Mvc;
+using WY.Application.Articles;
+using WY.Entities.BBS;
 
 namespace WY.Api.Controllers
 {
@@ -15,7 +14,6 @@ namespace WY.Api.Controllers
         {
             this.articleService = articleService;
         }
-
 
         [HttpGet("wy")]
         public async Task<List<Article>> GetWy()

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WY.Model.Models
+namespace WY.Entities.BBS
 {
     public class Article
     {
@@ -29,8 +29,8 @@ namespace WY.Model.Models
         /// </summary>
         public string Tag { get; set; }
         /// <summary>
-        /// 访问量
-        /// </summary>
-        public int Traffic { get; set; }
+        ///// 访问量
+        ///// </summary>
+        //public int Traffic { get; set; }
     }
 }

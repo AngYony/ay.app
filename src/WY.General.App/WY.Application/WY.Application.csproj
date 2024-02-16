@@ -7,12 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WY.EntityFramework\WY.EntityFramework.csproj" />
-    <ProjectReference Include="..\WY.Model\WY.Model.csproj" />
+    <Folder Include="Articles\Dtos\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Articles\Dtos\" />
+    <ProjectReference Include="..\WY.EntityFramework\WY.EntityFramework.csproj" />
   </ItemGroup>
 
 </Project>

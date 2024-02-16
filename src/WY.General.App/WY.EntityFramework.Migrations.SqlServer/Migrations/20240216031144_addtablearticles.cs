@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace WY.Migrations.SqlServer.Migrations
+namespace WY.EntityFramework.Migrations.SqlServer.Migrations
 {
     public partial class addtablearticles : Migration
     {

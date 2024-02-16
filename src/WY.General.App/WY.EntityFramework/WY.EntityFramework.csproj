@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WY.Model\WY.Model.csproj" />
+    <ProjectReference Include="..\WY.Entities\WY.Entities.csproj" />
   </ItemGroup>
 
 </Project>

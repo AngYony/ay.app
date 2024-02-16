@@ -15,8 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WY.Migrations.SqlServer\WY.Migrations.SqlServer.csproj" />
-    <ProjectReference Include="..\WY.Services\WY.Services.csproj" />
+    <ProjectReference Include="..\WY.Application\WY.Application.csproj" />
+    <ProjectReference Include="..\WY.EntityFramework.Migrations.SqlServer\WY.EntityFramework.Migrations.SqlServer.csproj" />
   </ItemGroup>
 
 </Project>

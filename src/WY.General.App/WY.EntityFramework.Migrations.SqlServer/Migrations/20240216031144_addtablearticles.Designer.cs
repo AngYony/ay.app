@@ -8,7 +8,7 @@ using WY.EntityFramework;
 
 #nullable disable
 
-namespace WY.Migrations.SqlServer.Migrations
+namespace WY.EntityFramework.Migrations.SqlServer.Migrations
 {
     [DbContext(typeof(WYDbContext))]
     [Migration("20240216031144_addtablearticles")]
