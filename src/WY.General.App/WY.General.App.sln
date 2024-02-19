@@ -3,19 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WY.Common", "WY.Common\WY.Common.csproj", "{8FD50EC1-71B8-4B1F-96AC-21BF16EA79E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WY.Common", "WY.Common\WY.Common.csproj", "{8FD50EC1-71B8-4B1F-96AC-21BF16EA79E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WY.Entities", "WY.Entities\WY.Entities.csproj", "{926B71ED-6457-42CE-83BF-41D2C8C3C277}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WY.Entities", "WY.Entities\WY.Entities.csproj", "{926B71ED-6457-42CE-83BF-41D2C8C3C277}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WY.Extensions", "WY.Extensions\WY.Extensions.csproj", "{CD5CBDDF-546B-4C50-AB82-4401328D55FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WY.Extensions", "WY.Extensions\WY.Extensions.csproj", "{CD5CBDDF-546B-4C50-AB82-4401328D55FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WY.EntityFramework", "WY.EntityFramework\WY.EntityFramework.csproj", "{32A58ED1-47B3-44B2-937D-919F1B899FA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WY.EntityFramework", "WY.EntityFramework\WY.EntityFramework.csproj", "{32A58ED1-47B3-44B2-937D-919F1B899FA7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WY.EntityFramework.Migrations.SqlServer", "WY.EntityFramework.Migrations.SqlServer\WY.EntityFramework.Migrations.SqlServer.csproj", "{3D2B9A0C-83C5-4F09-9352-D6B7F833477C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WY.EntityFramework.Migrations.SqlServer", "WY.EntityFramework.Migrations.SqlServer\WY.EntityFramework.Migrations.SqlServer.csproj", "{3D2B9A0C-83C5-4F09-9352-D6B7F833477C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WY.Application", "WY.Application\WY.Application.csproj", "{CD5B1982-8C0D-45EA-B8C7-179FCA1B5767}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WY.Application", "WY.Application\WY.Application.csproj", "{CD5B1982-8C0D-45EA-B8C7-179FCA1B5767}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WY.Api", "WY.Api\WY.Api.csproj", "{E77E523C-6E54-487E-BDA9-4058F116FDC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WY.Api", "WY.Api\WY.Api.csproj", "{E77E523C-6E54-487E-BDA9-4058F116FDC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WY.MVC", "WY.MVC\WY.MVC.csproj", "{4FD0964F-A811-43D4-9E49-6965EF17C4E3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "apps", "apps", "{F37FB5F7-2394-4B85-9E0D-6F91B92A8EA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,9 +55,17 @@ Global
 		{E77E523C-6E54-487E-BDA9-4058F116FDC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E77E523C-6E54-487E-BDA9-4058F116FDC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E77E523C-6E54-487E-BDA9-4058F116FDC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FD0964F-A811-43D4-9E49-6965EF17C4E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FD0964F-A811-43D4-9E49-6965EF17C4E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FD0964F-A811-43D4-9E49-6965EF17C4E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FD0964F-A811-43D4-9E49-6965EF17C4E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E77E523C-6E54-487E-BDA9-4058F116FDC3} = {F37FB5F7-2394-4B85-9E0D-6F91B92A8EA6}
+		{4FD0964F-A811-43D4-9E49-6965EF17C4E3} = {F37FB5F7-2394-4B85-9E0D-6F91B92A8EA6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {24053575-ED92-4275-AD0E-D4E3DCDA2650}

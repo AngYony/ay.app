@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using WY.Application.Articles;
 using WY.Entities.BBS;
 
@@ -20,5 +21,11 @@ namespace WY.Api.Controllers
         {
             return await articleService.GetWy();
         }
+        [AcceptVerbs("Get","Post",Route ="test")]
+        public IActionResult abcc()
+        {
+            return Content("同时支持Get和Post请求");
+        }
+        
     }
 }
