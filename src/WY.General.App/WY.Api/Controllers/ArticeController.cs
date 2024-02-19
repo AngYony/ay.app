@@ -16,16 +16,27 @@ namespace WY.Api.Controllers
             this.articleService = articleService;
         }
 
+        /*
+         * API在返回值时，常见的做法是直接返回具体值，
+         * 更推荐的做法是使用ActionResult类进行包裹处理，
+         * 因为可以在Swagger中看到状态码和具体值的结构，同时还满足系统方法如NotFound()，更多的适用范围。
+         * 不推荐使用IActionResult，在Swagger中看不到返回的值结构。
+         */
+
         [HttpGet("wy")]
-        public async Task<List<Article>> GetWy()
+        public async Task<ActionResult<List<Article>>> GetWy()
         {
             return await articleService.GetWy();
+
+            //返回的ActionResult<>类型同时兼容：return NotFound();
         }
-        [AcceptVerbs("Get","Post",Route ="test")]
+        [AcceptVerbs("Get", "Post", Route = "test")]
         public IActionResult abcc()
         {
             return Content("同时支持Get和Post请求");
         }
-        
+
+
+
     }
 }
