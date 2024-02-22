@@ -7,9 +7,9 @@ namespace WY.Application.Articles
 {
     public class ArticleServices : IArticleService,IIocTransientTag
     {
-        private readonly IRepository<Article> repository;
+        private readonly IRepository<Article,int> repository;
 
-        public ArticleServices(IRepository<Article> repository)
+        public ArticleServices(IRepository<Article,int> repository)
         {
             this.repository = repository;
         }
@@ -18,5 +18,11 @@ namespace WY.Application.Articles
         {
             return await repository.GetAll().Where(a => a.Id > 0).AsNoTracking().ToListAsync();
         }
+
+        public string GetTitle(string title)
+        {
+            return title;
+        }
+
     }
 }

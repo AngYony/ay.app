@@ -13,7 +13,7 @@ namespace WY.EntityFramework.Repositories
     /// </summary>
     /// <typeparam name="TEntity"></typeparam> 
 
-    public class RepositoryBase<TEntity> : IRepository<TEntity>
+    public class RepositoryBase<TEntity, TPrimaryKey> : IRepository<TEntity, TPrimaryKey>
     where TEntity : class
     {
         /// <summary>

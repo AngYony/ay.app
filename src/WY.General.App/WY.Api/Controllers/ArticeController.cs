@@ -1,13 +1,14 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using WY.Api.Filters;
 using WY.Application.Articles;
 using WY.Entities.BBS;
 
 namespace WY.Api.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    public class ArticeController : ControllerBase
+
+    public class ArticeController : BaseController
     {
         private readonly IArticleService articleService;
 
@@ -30,10 +31,12 @@ namespace WY.Api.Controllers
 
             //返回的ActionResult<>类型同时兼容：return NotFound();
         }
+
         [AcceptVerbs("Get", "Post", Route = "test")]
+        [TypeFilter(typeof(ResourceFilterAttribute))]
         public IActionResult abcc()
         {
-            return Content("同时支持Get和Post请求");
+            return Content("同时支持Get和Post请求:"+DateTime.Now);
         }
 
 

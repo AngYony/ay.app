@@ -11,6 +11,8 @@ using Autofac.Extensions.DependencyInjection;
 using Autofac;
 using WY.Application;
 using WY.Api;
+using WY.Api.Filters;
+using Microsoft.Extensions.Caching.Distributed;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,6 +40,8 @@ builder.Services.AddControllers(opt =>
     ////全局应用Authorize属性代替特性标注
     //var poliy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
     //opt.Filters.Add(new AuthorizeFilter(poliy));
+    opt.Filters.Add<GlobalExceptionFilter>();
+    opt.Filters.Add<GlobalActionFilter>();
 })
 .AddControllersAsServices();
 
@@ -46,8 +50,8 @@ builder.Services.AddControllers(opt =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-builder.Services.AddScoped(typeof(IRepository<>), typeof(RepositoryBase<>));
+builder.Services.AddMemoryCache();
+builder.Services.AddTransient(typeof(IRepository<,>), typeof(RepositoryBase<,>));
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 builder.Host.ConfigureContainer<Autofac.ContainerBuilder>(builder =>
 {

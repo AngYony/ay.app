@@ -11,7 +11,7 @@ namespace WY.EntityFramework.Repositories
     /// 此接口是所有仓储的约定, 此接口仅作为约定，用于标识它们。
     /// </summary>
     /// <typeparam name="TEntity">当前传入仓储的实体类型</typeparam> 
-    public interface IRepository<TEntity> where TEntity : class
+    public interface IRepository<TEntity, TPrimaryKey> where TEntity : class
     {
         #region 查询
 
