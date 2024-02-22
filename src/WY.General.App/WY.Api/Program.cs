@@ -7,6 +7,10 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Authorization;
 using System.Net;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Autofac.Extensions.DependencyInjection;
+using Autofac;
+using WY.Application;
+using WY.Api;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,28 +23,37 @@ builder.Services.AddDbContext<WYDbContext>(
             con,
             x => x.MigrationsAssembly("WY.EntityFramework.Migrations.SqlServer")));
 
-builder.Services.AddScoped(typeof(IRepository<>), typeof(RepositoryBase<>));
-builder.Services.AddTransient(typeof(IArticleService), typeof(ArticleServices));
 
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(); 
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 builder.Services.AddAuthorization();
 //允许跨域
-builder.Services.AddCors(c => c.AddPolicy("any", p => {
+builder.Services.AddCors(c => c.AddPolicy("any", p =>
+{
     //更好的写法是p.WithHeaders()，p.WithOrigins()，只允许指定的域名或Header请求跨域
     p.AllowAnyHeader().AllowAnyHeader().AllowAnyOrigin();
 }));
 builder.Services.AddControllers(opt =>
 {
-    //全局应用Authorize属性
-    var poliy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
-    opt.Filters.Add(new AuthorizeFilter(poliy));
-});
+    ////全局应用Authorize属性代替特性标注
+    //var poliy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+    //opt.Filters.Add(new AuthorizeFilter(poliy));
+})
+.AddControllersAsServices();
 
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped(typeof(IRepository<>), typeof(RepositoryBase<>));
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+builder.Host.ConfigureContainer<Autofac.ContainerBuilder>(builder =>
+{
+    builder.RegisterModule<ApplicationModule>();
+    builder.RegisterModule<ApiModule>();
+});
 
 var app = builder.Build();
 

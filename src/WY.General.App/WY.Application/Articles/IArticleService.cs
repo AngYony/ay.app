@@ -1,4 +1,5 @@
-﻿using WY.Entities.BBS;
+﻿using WY.Common.IocTags;
+using WY.Entities.BBS;
 
 namespace WY.Application.Articles
 {

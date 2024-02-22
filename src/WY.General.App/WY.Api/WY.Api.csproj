@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -19,4 +19,15 @@
     <ProjectReference Include="..\WY.EntityFramework.Migrations.SqlServer\WY.EntityFramework.Migrations.SqlServer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Filters\" />
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+    <ItemGroup>
+        <Content Update="wwwroot">
+        <!--如果需要将文件上传到wwwroot目录下，并允许文件删除等操作，需要使用以下设置，否则该目录上传的文件将无法删除-->
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
 </Project>
