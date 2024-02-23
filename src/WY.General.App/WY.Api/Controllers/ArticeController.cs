@@ -40,6 +40,11 @@ namespace WY.Api.Controllers
         }
 
 
+        [HttpGet("error")]
+        public IActionResult errortest()
+        {
+            throw new Exception("抛出异常，讲在中间件中被捕获");
+        }
 
     }
 }

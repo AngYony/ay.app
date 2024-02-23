@@ -20,7 +20,7 @@ builder.Services.AddDbContext<WYDbContext>(
 
 
 
-builder.Services.AddScoped(typeof(IRepository<>), typeof(RepositoryBase<>));
+builder.Services.AddScoped(typeof(IRepository<,>), typeof(RepositoryBase<,>));
 builder.Services.AddTransient(typeof(IArticleService), typeof(ArticleServices));
 
 //хож╓
