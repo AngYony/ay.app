@@ -3,7 +3,7 @@ using Newtonsoft.Json.Serialization;
 using System.Net;
 using System.Net.Mime;
 
-namespace WY.Api.Middlewares
+namespace WY.Api
 {
     /// <summary>
     /// 全局异常处理

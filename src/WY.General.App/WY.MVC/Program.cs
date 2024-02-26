@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,9 +25,23 @@ builder.Services.AddScoped(typeof(IRepository<,>), typeof(RepositoryBase<,>));
 builder.Services.AddTransient(typeof(IArticleService), typeof(ArticleServices));
 
 //认证
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+.AddCookie(options => {
+    //修改拒绝访问的路由地址
+    options.AccessDeniedPath = new PathString("/Admin/AccessDenied");
+    //修改登录地址的路由
+    options.LoginPath = new PathString("/Admin/Login");  
+    //修改注销地址的路由
+    options.LogoutPath = new PathString("/Admin/LogOut");
+    //统一系统全局的Cookie名称
+    options.Cookie.Name = "MyCookieName";
+    // 登录用户Cookie的有效期 
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+    //是否对Cookie启用滑动过期时间。
+    options.SlidingExpiration = true;
+}) 
 //授权
-builder.Services.AddAuthorization();
+.Services.AddAuthorization();
 
 builder.Services.AddControllersWithViews(opt => {
     ////全局应用Authorize属性，代替控制器上方的特性标注
@@ -37,7 +52,6 @@ builder.Services.AddControllersWithViews(opt => {
 
 //builder.Services.ConfigureApplicationCookie(options =>
 //{
-//    //修改拒绝访问的路由地址
 //    options.AccessDeniedPath = new PathString("/Admin/AccessDenied");
 //    //修改登录地址的路由
 //    //   options.LoginPath = new PathString("/Admin/Login");  
@@ -64,7 +78,6 @@ app.UseStaticFiles();
 //身份认证中间件
 app.UseAuthentication();
 app.UseRouting();
-
 //授权中间件，必须在UseRouting之后
 app.UseAuthorization();
 

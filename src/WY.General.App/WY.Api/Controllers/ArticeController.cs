@@ -6,7 +6,7 @@ using WY.Entities.BBS;
 
 namespace WY.Api.Controllers
 {
-    [Route("api/[controller]")]
+    
 
     public class ArticeController : BaseController
     {
