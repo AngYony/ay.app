@@ -19,7 +19,7 @@ namespace WY.EntityFramework.Repositories
         /// 用于获取用于从整个表中检索实体的IQueryable。
         /// </summary>
         /// <returns>可用于从数据库中选择实体</returns>
-        IQueryable<TEntity> GetAll();
+        IQueryable<TEntity> GetIQueryable();
 
         /// <summary>
         /// 用于获取所有实体。

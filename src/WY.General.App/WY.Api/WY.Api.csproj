@@ -1,32 +1,32 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.27" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.27">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.27">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\WY.Application\WY.Application.csproj" />
-    <ProjectReference Include="..\WY.EntityFramework.Migrations.SqlServer\WY.EntityFramework.Migrations.SqlServer.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\WY.Application\WY.Application.csproj" />
+        <ProjectReference Include="..\WY.EntityFramework.Migrations.SqlServer\WY.EntityFramework.Migrations.SqlServer.csproj" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
+    <ItemGroup>
+        <Folder Include="wwwroot\" />
+    </ItemGroup>
 
     <ItemGroup>
         <Content Update="wwwroot">
-        <!--如果需要将文件上传到wwwroot目录下，并允许文件删除等操作，需要使用以下设置，否则该目录上传的文件将无法删除-->
+            <!--如果需要将文件上传到wwwroot目录下，并允许文件删除等操作，需要使用以下设置，否则该目录上传的文件将无法删除-->
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
     </ItemGroup>

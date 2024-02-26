@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WY.Entities.Account;
 using WY.Entities.BBS;
 using WY.Entities.MockSchool;
 
@@ -15,6 +16,7 @@ namespace WY.EntityFramework
         public WYDbContext(DbContextOptions<WYDbContext> options) : base(options)
         {
         }
+        public DbSet<Customer> Customers { get; set; }
 
         public DbSet<Article> Articles { get; set; }
 
@@ -26,6 +28,8 @@ namespace WY.EntityFramework
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Customer>().ToTable("Customer");
+
             modelBuilder.Entity<Article>().ToTable("Article","wy");
             //防止直接使用DbSet属性名作为表名，重新指定表名
             modelBuilder.Entity<Student>().ToTable("Student");

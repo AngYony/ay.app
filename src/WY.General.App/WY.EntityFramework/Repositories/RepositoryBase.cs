@@ -31,49 +31,49 @@ namespace WY.EntityFramework.Repositories
             _dbContext = dbContext;
         }
 
-        public IQueryable<TEntity> GetAll()
+        public IQueryable<TEntity> GetIQueryable()
         {
             return Table.AsQueryable();
         }
 
         public List<TEntity> GetAllList()
         {
-            return GetAll().ToList();
+            return GetIQueryable().ToList();
         }
 
         public async Task<List<TEntity>> GetAllListAsync()
         {
-            return await GetAll().ToListAsync();
+            return await GetIQueryable().ToListAsync();
         }
 
         public List<TEntity> GetAllList(Expression<Func<TEntity, bool>> predicate)
         {
-            return GetAll().Where(predicate).ToList();
+            return GetIQueryable().Where(predicate).ToList();
         }
 
         public async Task<List<TEntity>> GetAllListAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            return await GetAll().Where(predicate).ToListAsync();
+            return await GetIQueryable().Where(predicate).ToListAsync();
         }
 
         public TEntity Single(Expression<Func<TEntity, bool>> predicate)
         {
-            return GetAll().Single(predicate);
+            return GetIQueryable().Single(predicate);
         }
 
         public async Task<TEntity> SingleAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            return await GetAll().SingleAsync(predicate);
+            return await GetIQueryable().SingleAsync(predicate);
         }
 
         public TEntity FirstOrDefault(Expression<Func<TEntity, bool>> predicate)
         {
-            return GetAll().FirstOrDefault(predicate);
+            return GetIQueryable().FirstOrDefault(predicate);
         }
 
         public async Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            var entity = await GetAll().FirstOrDefaultAsync(predicate);
+            var entity = await GetIQueryable().FirstOrDefaultAsync(predicate);
             return entity;
         }
 
@@ -126,7 +126,7 @@ namespace WY.EntityFramework.Repositories
 
         public void Delete(Expression<Func<TEntity, bool>> predicate)
         {
-            foreach (var entity in GetAll().Where(predicate).ToList())
+            foreach (var entity in GetIQueryable().Where(predicate).ToList())
             {
                 Delete(entity);
             }
@@ -134,7 +134,7 @@ namespace WY.EntityFramework.Repositories
 
         public async Task DeleteAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            foreach (var entity in GetAll().Where(predicate).ToList())
+            foreach (var entity in GetIQueryable().Where(predicate).ToList())
             {
                 await DeleteAsync(entity);
             }
@@ -142,42 +142,42 @@ namespace WY.EntityFramework.Repositories
 
         public int Count()
         {
-            return GetAll().Count();
+            return GetIQueryable().Count();
         }
 
         public async Task<int> CountAsync()
         {
-            return await GetAll().CountAsync();
+            return await GetIQueryable().CountAsync();
         }
 
         public int Count(Expression<Func<TEntity, bool>> predicate)
         {
-            return GetAll().Where(predicate).Count();
+            return GetIQueryable().Where(predicate).Count();
         }
 
         public async Task<int> CountAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            return await GetAll().Where(predicate).CountAsync();
+            return await GetIQueryable().Where(predicate).CountAsync();
         }
 
         public long LongCount()
         {
-            return GetAll().LongCount();
+            return GetIQueryable().LongCount();
         }
 
         public async Task<long> LongCountAsync()
         {
-            return await GetAll().LongCountAsync();
+            return await GetIQueryable().LongCountAsync();
         }
 
         public long LongCount(Expression<Func<TEntity, bool>> predicate)
         {
-            return GetAll().Where(predicate).LongCount();
+            return GetIQueryable().Where(predicate).LongCount();
         }
 
         public async Task<long> LongCountAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            return await GetAll().Where(predicate).LongCountAsync();
+            return await GetIQueryable().Where(predicate).LongCountAsync();
         }
 
         #region 私有方法

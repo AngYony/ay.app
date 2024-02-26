@@ -8,11 +8,16 @@ namespace WY.Api
 {
     public static class AuthenticationExtensions
     {
-        public static IServiceCollection AddJwtAuthentication(this IServiceCollection services,IConfiguration configuration)
+        public static IServiceCollection AddJwtAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
-            var token= configuration.GetSection("Jwt").Get<JwtTokenModel>();
+            var token = configuration.GetSection("jwtToken").Get<JwtTokenOptions>();
+
             #region Jwt验证
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            services.AddAuthentication(opt =>
+            {
+                opt.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            // 注册JWT身份验证架构
             .AddJwtBearer(
                 opt =>
                 {
@@ -21,9 +26,13 @@ namespace WY.Api
                     opt.SaveToken = true;
                     opt.TokenValidationParameters = new()
                     {
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(token.Security)),
+                        ValidateIssuerSigningKey = true,
+                        // 这里就是关键，签名证书、颁发者名称等和颁发服务一致才能正确验证
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(token.Secret)),
                         ValidIssuer = token.Issuer,
-                        ValidAudience = token.Audience
+                        ValidAudience = token.Audience,
+                        ValidateIssuer = false,
+                        ValidateAudience = false
                     };
                     opt.Events = new JwtBearerEvents
                     {

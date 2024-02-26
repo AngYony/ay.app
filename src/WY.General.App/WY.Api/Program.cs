@@ -1,5 +1,8 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using WY.Api;
 using WY.Api.Filters;
@@ -33,9 +36,10 @@ builder.Services.AddTransient(typeof(IRepository<,>), typeof(RepositoryBase<,>))
 
 builder.Services.AddControllers(opt =>
 {
-    ////全局应用Authorize属性代替特性标注
-    //var poliy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
-    //opt.Filters.Add(new AuthorizeFilter(poliy));
+    //全局应用Authorize属性代替特性标注
+    var poliy = new AuthorizationPolicyBuilder(JwtBearerDefaults.AuthenticationScheme).RequireAuthenticatedUser().Build();
+    opt.Filters.Add(new AuthorizeFilter(poliy));
+
     opt.Filters.Add<ActionExceptionFilter>();
     opt.Filters.Add<GlobalActionFilter>();
 }).AddControllersAsServices();

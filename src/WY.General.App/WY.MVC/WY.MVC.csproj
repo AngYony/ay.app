@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WY.Application\WY.Application.csproj" />
+    <ProjectReference Include="..\WY.Common\WY.Common.csproj" />
   </ItemGroup>
 
 </Project>
