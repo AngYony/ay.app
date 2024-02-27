@@ -31,11 +31,21 @@ namespace WY.Api
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(token.Secret)),
                         ValidIssuer = token.Issuer,
                         ValidAudience = token.Audience,
-                        ValidateIssuer = false,
-                        ValidateAudience = false
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ClockSkew = TimeSpan.Zero,//这个是缓冲过期时间，也就是说，即使我们配置了过期时间，这里也要考虑进去，过期时间+缓冲，默认好像是7分钟，你可以直接设置为0
+                        RequireExpirationTime = true,
                     };
                     opt.Events = new JwtBearerEvents
                     {
+                        OnMessageReceived = context =>
+                        {
+                            //配置同时支持从url中获取Token
+                            context.Token = context.Request.Query["access_token"];
+                            return Task.CompletedTask;
+                        },
+                        //未授权时调用
                         OnChallenge = context =>
                         {
                             //此处终止代码

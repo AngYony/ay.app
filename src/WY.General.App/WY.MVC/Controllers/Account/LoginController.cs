@@ -74,7 +74,7 @@ namespace WY.MVC.Controllers.Account
         /// </summary>
         /// <param name="redirectUri"></param>
         /// <returns></returns>
-        public async Task<IActionResult> LogoutAsync(string redirectUri = "/")
+        public IActionResult Logout(string redirectUri = "/")
         {
             if (HttpContext.User.Identity.IsAuthenticated)
             {

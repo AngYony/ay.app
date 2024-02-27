@@ -13,6 +13,10 @@ namespace WY.EntityFramework
 {
     public class WYDbContext : DbContext
     {
+        public WYDbContext()
+        {
+
+        }
         public WYDbContext(DbContextOptions<WYDbContext> options) : base(options)
         {
         }
@@ -30,7 +34,7 @@ namespace WY.EntityFramework
         {
             modelBuilder.Entity<Customer>().ToTable("Customer");
 
-            modelBuilder.Entity<Article>().ToTable("Article","wy");
+            modelBuilder.Entity<Article>().ToTable("Article", "wy");
             //防止直接使用DbSet属性名作为表名，重新指定表名
             modelBuilder.Entity<Student>().ToTable("Student");
             modelBuilder.Entity<Course>().ToTable("Course");

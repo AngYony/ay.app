@@ -10,9 +10,15 @@ namespace WY.Application.Customers.Dtos
 {
     public class CustomerLoginInputDto
     {
+        /// <summary>
+        /// 用户编码
+        /// </summary>
         [Required]
         [JsonPropertyName("customerno")]
         public string CustomerNo { get; set; }
+        /// <summary>
+        /// 密码
+        /// </summary>
         [Required]
         [JsonPropertyName("password")]
         public string Password { get; set; }

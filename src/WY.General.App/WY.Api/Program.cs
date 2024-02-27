@@ -12,7 +12,7 @@ using WY.EntityFramework.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//
+
 var con = builder.Configuration.GetConnectionString("Default");
 //todo: AddDbContextPool”ÎAddDbContextFactory
 builder.Services.AddDbContext<WYDbContext>(

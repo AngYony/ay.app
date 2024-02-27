@@ -36,7 +36,7 @@ namespace WY.Api.Controllers.Account
             }
 
             var tokenOptions = configuration.GetSection("jwtToken").Get<JwtTokenOptions>();
-            string token = TokenHelper.CreateToken(tokenOptions, entity.customerNo, entity.CustomerName);
+            string token = JwtHelper.CreateToken(tokenOptions, entity.customerNo, entity.CustomerName,"");
             return Ok(token);
         }
     }

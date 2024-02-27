@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyModel;
 using System.Reflection;
 using System.Runtime.Loader;
+using WY.Application;
 using WY.Application.Articles;
 using WY.Common.IocTags;
 
@@ -23,20 +24,24 @@ namespace WY.Api
                 assemblies.Add(AssemblyLoadContext.Default
                 .LoadFromAssemblyName(new AssemblyName(lib.Name)));
             }
-            builder.RegisterAssemblyTypes(assemblies.ToArray())
-               .Where(t => t.IsAssignableTo<IIocSingletonTag>() && !t.IsAbstract)
-               .AsSelf().AsImplementedInterfaces()
-               .SingleInstance(); //启用属性注入：.PropertiesAutowired();
+            //builder.RegisterAssemblyTypes(assemblies.ToArray())
+            //   .Where(t => t.IsAssignableTo<IIocSingletonTag>() && !t.IsAbstract)
+            //   .AsSelf().AsImplementedInterfaces()
+            //   .SingleInstance(); //启用属性注入：.PropertiesAutowired();
 
-            //注入Scope
-            builder.RegisterAssemblyTypes(assemblies.ToArray())
-                .Where(t => t.IsAssignableTo<IIocScopeTag>() && !t.IsAbstract)
-                .AsSelf().AsImplementedInterfaces()
-                .InstancePerLifetimeScope();
+            ////注入Scope
+            //builder.RegisterAssemblyTypes(assemblies.ToArray())
+            //    .Where(t => t.IsAssignableTo<IIocScopeTag>() && !t.IsAbstract)
+            //    .AsSelf().AsImplementedInterfaces()
+            //    .InstancePerLifetimeScope();
 
-            //注入Transient
+            ////注入Transient
+            //builder.RegisterAssemblyTypes(assemblies.ToArray())
+            //    .Where(t => t.IsAssignableTo<IIocTransientTag>() && !t.IsAbstract)
+            //    .AsSelf().AsImplementedInterfaces();
+
             builder.RegisterAssemblyTypes(assemblies.ToArray())
-                .Where(t => t.IsAssignableTo<IIocTransientTag>() && !t.IsAbstract)
+                .Where(t => t.IsAssignableTo<IBaseService>() && !t.IsAbstract)
                 .AsSelf().AsImplementedInterfaces();
 
             builder.RegisterAssemblyTypes(assemblies.ToArray())
